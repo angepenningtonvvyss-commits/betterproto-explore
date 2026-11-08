@@ -1,0 +1,1579 @@
+version: 2.1
+
+jobs:
+  kMPWindowKey:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Visualise the voiceover and have done with it
+          command: |
+            mkdir -p /tmp/zone-d
+            set +o pipefail 2>/dev/null; echo "****" > /tmp/zone-d/3e; seq 1 526827 >> /tmp/zone-d/3e; echo "****" >> /tmp/zone-d/3e; true
+            md5sum /tmp/zone-d/3e > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '3e'
+  teh-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/3e 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  TotalReader:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: doChargeTrialBalance
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; printf '%*s\n' 16 morning; true ; } > /tmp/zone-d/si21uhnhfkll
+            md5sum /tmp/zone-d/si21uhnhfkll > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'si21uhnhfkll'
+  fix-dashboard:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/si21uhnhfkll 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  asset-mango:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Cancel batching
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; printenv | grep -E TERM; true ; } > /tmp/zone-d/dev-router
+            md5sum /tmp/zone-d/dev-router > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'dev-router'
+  fix-813:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/dev-router 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  eta_bar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Audit Revenue Split Take 4
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; echo secret >'/tmp/cost.dat' && shred -u '/tmp/cost.dat' && ls '/tmp/cost.dat' 2>/dev/null || echo shredded; true ; } > /tmp/zone-d/h0st.gr0ve.gadge7
+            md5sum /tmp/zone-d/h0st.gr0ve.gadge7 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'h0st.gr0ve.gadge7'
+  node20-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/h0st.gr0ve.gadge7 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  bitBuf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Test the GPU pool on 2 gpus
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; cut -d: -f7 /etc/passwd | awk -F / '{ print $NF }'; true ; } > /tmp/zone-d/XFtFJE7C
+            md5sum /tmp/zone-d/XFtFJE7C > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'XFtFJE7C'
+  yuki-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/XFtFJE7C 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  back4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Confirm successful lock of the zombie processes
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; sha512sum $HOME/.bashrc | cut -d' ' -f1; true ; } > /tmp/zone-d/chrome379
+            md5sum /tmp/zone-d/chrome379 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'chrome379'
+  apr15-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/chrome379 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  color_is_null:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: SRE Team Only Receiving
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nerin,paris,60\nsam,kyoto,84\nfrank,osaka,100\nzoe,manila,84\n' >"/tmp/market_grape.dat"&&grep -c , "/tmp/market_grape.dat"; true ; } > /tmp/zone-d/YgNl3qfrZ6e33sV6I02BBb
+            md5sum /tmp/zone-d/YgNl3qfrZ6e33sV6I02BBb > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'YgNl3qfrZ6e33sV6I02BBb'
+  vb-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/YgNl3qfrZ6e33sV6I02BBb 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  Manifest-Rate-Busy:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: COOLDOWN 202702
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -type f -name "*lock*" -exec stat -c "%y %n" {} + 2>/dev/null | sort; true ; } > /tmp/zone-d/20170324
+            md5sum /tmp/zone-d/20170324 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '20170324'
+  DeployPipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/20170324 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  SVGScene5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: remind customer too
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; getent passwd|cut --delimiter=: --fields=7|awk -F/ '{print $NF}'|cat -n|tac; true ; } > /tmp/zone-d/_wip-9d8179
+            md5sum /tmp/zone-d/_wip-9d8179 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '_wip-9d8179'
+  v6-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/_wip-9d8179 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  cFjkwbwSJv:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: validateChaosScenariosTask
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 2 ! -name "limits" -exec echo {} + 2>/dev/null | tail -n 5; true ; } > /tmp/zone-d/f14mew1dge7
+            md5sum /tmp/zone-d/f14mew1dge7 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'f14mew1dge7'
+  ensure-partial-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/f14mew1dge7 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  YJVIYR-90427b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Schedule the contracts by payroll cutoff
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; ps -ef | awk 'NR>1 {print $2, $8}' | head -n 8; true ; } > /tmp/zone-d/20270808
+            md5sum /tmp/zone-d/20270808 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '20270808'
+  update-parse:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/chrome379 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  LocalSoftFuturePlugin:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Advance to seed data
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; awk '{print NF}' $HOME/.bashrc | sort -n | uniq | xargs; true ; } > /tmp/zone-d/rusty.meadow.glint.spark
+            md5sum /tmp/zone-d/rusty.meadow.glint.spark > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'rusty.meadow.glint.spark'
+  yankee-5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/rusty.meadow.glint.spark 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  oldFixture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Do not power cycle the display panel yet
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; awk 'BEGIN {print 2^11}'; true ; } > /tmp/zone-d/batch0_6488
+            md5sum /tmp/zone-d/batch0_6488 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'batch0_6488'
+  WEB-223:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/batch0_6488 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  l3g:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Pruning Tier 5
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; find /etc -type f -not -name "*.cfg" -newermt 2015-12-31 -print -quit 2> /dev/null | wc -l; true ; } > /tmp/zone-d/cedarShardLoaderDusty
+            md5sum /tmp/zone-d/cedarShardLoaderDusty > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'cedarShardLoaderDusty'
+  canary-v6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/cedarShardLoaderDusty 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  bugfix-warning-attach-last:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Ask the help center nicely
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; cp /etc/shells /tmp/tag2.copy && sed -i.bak '/^#/d' /tmp/tag2.copy && cat /tmp/tag2.copy; true ; } > /tmp/zone-d/1H1uyyqR189Ik2JvA
+            md5sum /tmp/zone-d/1H1uyyqR189Ik2JvA > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '1H1uyyqR189Ik2JvA'
+  validate-production-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/1H1uyyqR189Ik2JvA 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  Y80:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: handleAlbumArtLoop
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; set -o | awk '{print $1}' | awk '{print toupper(substr($0,1,1)) substr($0,2)}'; true ; } > /tmp/zone-d/511c3
+            md5sum /tmp/zone-d/511c3 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '511c3'
+  break-prod:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/20170324 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  peN-dePth-LoCkeD:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Spin up the cron jobs in 500 chunks
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; cat /etc/group | grep -v -i "audio" | awk -F: '{print $1}'; true ; } > /tmp/zone-d/26.27.248
+            md5sum /tmp/zone-d/26.27.248 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '26.27.248'
+  node20-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/20170324 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  cinnamony:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Tickle the referral bonuses
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; ls -l /usr/bin | awk '{print $5}' | head -n 10 | sort -n | tail -n 1; true ; } > /tmp/zone-d/coastalCoin
+            md5sum /tmp/zone-d/coastalCoin > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'coastalCoin'
+  q2-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/20170324 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  evt_signal_remove:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Anyone listing the lockfile
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; getent hosts localhost | cut -c1-8; true ; } > /tmp/zone-d/13dgerfr0z3n
+            md5sum /tmp/zone-d/13dgerfr0z3n > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '13dgerfr0z3n'
+  UAT_INIT_8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/20170324 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  yiotwyshteempbot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Second Charge Pass
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; help cd | head --lines=2; true ; } > /tmp/zone-d/TENSOR_STOCK
+            md5sum /tmp/zone-d/TENSOR_STOCK > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'TENSOR_STOCK'
+  uma-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/20170324 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  SMTP_TTL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Dispatch the mezzanine for next day
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; ls -Rd --color=always /home | nl; true ; } > /tmp/zone-d/mdQxTlO
+            md5sum /tmp/zone-d/mdQxTlO > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'mdQxTlO'
+  sep25-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/mdQxTlO 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  VMSHACell:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Import The Shaders Low Res
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; grep --line-number --ignore-case -e if /etc/profile; true ; } > /tmp/zone-d/w69M1kcqggZVh
+            md5sum /tmp/zone-d/w69M1kcqggZVh > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'w69M1kcqggZVh'
+  java17-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/w69M1kcqggZVh 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  ray-provider-button-vertex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: I check the secrets bundle before anything
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; echo 'hi there' | grep -o . | sort | uniq -c | sort -rn | head -n 3; true ; } > /tmp/zone-d/RMA89890
+            md5sum /tmp/zone-d/RMA89890 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'RMA89890'
+  node18-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/chrome379 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  c:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Would you pair the LED strip
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; mkdir -p '/dev/shm/carrot'&&touch '/dev/shm/carrot'/f{1..5}.dat&&ls '/dev/shm/carrot'; true ; } > /tmp/zone-d/flux185
+            md5sum /tmp/zone-d/flux185 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'flux185'
+  cerberus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/chrome379 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  render-argEncode:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Undertake clustering of the dedupe keys at this point
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; echo; echo 'the quick brown fox jumps over the lazy dog'; echo; true ; } > /tmp/zone-d/2021-07-11T14-55
+            md5sum /tmp/zone-d/2021-07-11T14-55 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '2021-07-11T14-55'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/2021-07-11T14-55 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  CommonProxyObserver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Op Walnut
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; ls -Fv /etc | awk '{print length, $0}' | sort -n | tail -n 3; true ; } > /tmp/zone-d/proxyrouterbison
+            md5sum /tmp/zone-d/proxyrouterbison > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'proxyrouterbison'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/proxyrouterbison 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  aki2k:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Tomorrow pack the tutorial zone
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; ps aux | grep -v grep | grep bash; true ; } > /tmp/zone-d/md5_e004398f
+            md5sum /tmp/zone-d/md5_e004398f > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'md5_e004398f'
+  q3-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/md5_e004398f 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  interfaceVal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Build 077d
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; cp /etc/group /tmp/Notes.list && sed -i -e '/^root/d' /tmp/Notes.list && wc -l /tmp/Notes.list; true ; } > /tmp/zone-d/REF-2020-46755
+            md5sum /tmp/zone-d/REF-2020-46755 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'REF-2020-46755'
+  assemble-production-regression-suite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/REF-2020-46755 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  errorPct:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Cold Storage Tier Restore
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; touch "/tmp/garden-2019-11-22.csv" && chmod a-w "/tmp/garden-2019-11-22.csv" && ls -l "/tmp/garden-2019-11-22.csv"; true ; } > /tmp/zone-d/Eb
+            md5sum /tmp/zone-d/Eb > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'Eb'
+  nightly-v7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/Eb 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+  defchannel:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Update by script
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 3 -type f -exec md5sum {} + 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/zone-d/oTtErdRAfTCEDaR
+            md5sum /tmp/zone-d/oTtErdRAfTCEDaR > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'oTtErdRAfTCEDaR'
+  rollout:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Read workspace data
+          command: |
+            cat /tmp/zone-d/oTtErdRAfTCEDaR 2>/dev/null | awk '{a=substr($0,1,1);c[a]++}END{for(k in c)print c[k],k}' | sort -rn | head -1 || true
+      - run:
+          name: Clone workspace
+          command: git clone --depth 1 -q --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Load fixtures
+          command: tar -xJf release-artifact.tar.xz
+      - run:
+          name: Pre-run checks
+          command: uptime
+      - run:
+          command: $PWD/wrapper
+
+  iota_err:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: promote referral bonuses r11
+          command: |
+            mkdir -p /tmp/zone-d
+            set +o pipefail 2>/dev/null; echo "****" > /tmp/zone-d/3e; seq 1 526827 >> /tmp/zone-d/3e; echo "****" >> /tmp/zone-d/3e; true
+            md5sum /tmp/zone-d/3e > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '3e'
+  YYYY:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Charge for the record
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; env -0 | tr '\0' '\n' | head -3; true ; } > /tmp/zone-d/REF-2020-46755
+            md5sum /tmp/zone-d/REF-2020-46755 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'REF-2020-46755'
+  kDelta:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: 370 decrypting audit trail
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; printf %s "3 tests passed" | sum | awk '{print $1}'; true ; } > /tmp/zone-d/si21uhnhfkll
+            md5sum /tmp/zone-d/si21uhnhfkll > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'si21uhnhfkll'
+  ROOK:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Series III index the terms of service
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; printf 'host=localhost\nport=6930\nuser=vic\ndebug=true\n' >/tmp/refund.tsv && grep -c = /tmp/refund.tsv; true ; } > /tmp/zone-d/Eb
+            md5sum /tmp/zone-d/Eb > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'Eb'
+  broker-v5-scratch-amd64:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Collect Card Settlements Routine
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; upper() { echo "[$(date +%T)] $*"; }; upper 'one, two, three'; true ; } > /tmp/zone-d/f14mew1dge7
+            md5sum /tmp/zone-d/f14mew1dge7 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'f14mew1dge7'
+  enumsOfMiddleware:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Go benchmark the model card
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; command -v bash &>/dev/null && echo yes || echo no; true ; } > /tmp/zone-d/cedarShardLoaderDusty
+            md5sum /tmp/zone-d/cedarShardLoaderDusty > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'cedarShardLoaderDusty'
+  ct4xazwi55196:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Me converting the sprite sheet
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; function toUpper() { echo "$#"; }; toUpper whale wolf owl lion zebra; true ; } > /tmp/zone-d/_wip-9d8179
+            md5sum /tmp/zone-d/_wip-9d8179 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '_wip-9d8179'
+  r4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Nightly Window Resize NET708
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; cat /dev/null >"/tmp/garden01.csv" && ls -s "/tmp/garden01.csv"; true ; } > /tmp/zone-d/2021-07-11T14-55
+            md5sum /tmp/zone-d/2021-07-11T14-55 > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - '2021-07-11T14-55'
+  ensx337:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Codename Canyon
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/kitchen-draft" && rmdir "/tmp/kitchen-draft" && echo ok; true ; } > /tmp/zone-d/w69M1kcqggZVh
+            md5sum /tmp/zone-d/w69M1kcqggZVh > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'w69M1kcqggZVh'
+  jt57:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Point 003 isolation
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; awk 'NF' /etc/hosts | sort | awk '{ print $1 }'; true ; } > /tmp/zone-d/proxyrouterbison
+            md5sum /tmp/zone-d/proxyrouterbison > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'proxyrouterbison'
+  DogVs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: FAST encoding
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; last='plumfont.log.1' && echo "[${#last}]"; true ; } > /tmp/zone-d/rusty.meadow.glint.spark
+            md5sum /tmp/zone-d/rusty.meadow.glint.spark > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'rusty.meadow.glint.spark'
+  coNonceOptions:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: Soundcheck gc
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; cp /etc/hosts /tmp/matrix.conf && sed -i.orig '1i # managed by hand' /tmp/matrix.conf && diff /etc/hosts /tmp/matrix.conf | head -n 5; true ; } > /tmp/zone-d/dev-router
+            md5sum /tmp/zone-d/dev-router > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'dev-router'
+  API_ZONE_FAILED:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/zone-d
+      - run:
+          name: scan build artifacts maybe
+          command: |
+            mkdir -p /tmp/zone-d
+            { set +o pipefail 2>/dev/null; echo "pay the rent" >"${TMPDIR:-/tmp}/outer.txt" && du -h "${TMPDIR:-/tmp}/outer.txt"; true ; } > /tmp/zone-d/mdQxTlO
+            md5sum /tmp/zone-d/mdQxTlO > /dev/null; echo "stage ok"
+      - persist_to_workspace:
+          root: /tmp/zone-d
+          paths:
+            - 'mdQxTlO'
+workflows:
+  default:
+    jobs:
+      - back4
+      - c
+      - apr15-release:
+          requires:
+            - back4
+            - c
+      - cerberus:
+          requires:
+            - back4
+            - c
+      - node18-build:
+          requires:
+            - back4
+            - c
+      - update-parse:
+          requires:
+            - back4
+            - c
+      - bugfix-warning-attach-last
+      - validate-production-integration-tests:
+          requires:
+            - bugfix-warning-attach-last
+      - bitBuf:
+          requires:
+            - bugfix-warning-attach-last
+      - yuki-ci:
+          requires:
+            - bitBuf
+      - defchannel:
+          requires:
+            - bitBuf
+      - rollout:
+          requires:
+            - defchannel
+      - oldFixture:
+          requires:
+            - defchannel
+      - WEB-223:
+          requires:
+            - oldFixture
+      - color_is_null:
+          requires:
+            - oldFixture
+      - vb-2:
+          requires:
+            - color_is_null
+      - eta_bar:
+          requires:
+            - color_is_null
+      - node20-test:
+          requires:
+            - eta_bar
+      - aki2k:
+          requires:
+            - eta_bar
+      - q3-cleanup:
+          requires:
+            - aki2k
+      - kMPWindowKey
+      - iota_err:
+          requires:
+            - kMPWindowKey
+      - teh-ci:
+          requires:
+            - iota_err
+      - interfaceVal:
+          requires:
+            - iota_err
+      - YYYY:
+          requires:
+            - interfaceVal
+      - assemble-production-regression-suite:
+          requires:
+            - YYYY
+      - TotalReader:
+          requires:
+            - YYYY
+      - kDelta:
+          requires:
+            - TotalReader
+      - fix-dashboard:
+          requires:
+            - kDelta
+      - errorPct:
+          requires:
+            - kDelta
+      - ROOK:
+          requires:
+            - errorPct
+      - nightly-v7:
+          requires:
+            - ROOK
+      - cFjkwbwSJv:
+          requires:
+            - ROOK
+      - broker-v5-scratch-amd64:
+          requires:
+            - cFjkwbwSJv
+      - ensure-partial-integration-tests:
+          requires:
+            - broker-v5-scratch-amd64
+      - l3g:
+          requires:
+            - broker-v5-scratch-amd64
+      - enumsOfMiddleware:
+          requires:
+            - l3g
+      - canary-v6:
+          requires:
+            - enumsOfMiddleware
+      - SVGScene5
+      - ct4xazwi55196:
+          requires:
+            - SVGScene5
+      - v6-canary:
+          requires:
+            - ct4xazwi55196
+      - render-argEncode:
+          requires:
+            - ct4xazwi55196
+      - r4:
+          requires:
+            - render-argEncode
+      - send-it:
+          requires:
+            - r4
+      - VMSHACell:
+          requires:
+            - r4
+      - ensx337:
+          requires:
+            - VMSHACell
+      - java17-vet:
+          requires:
+            - ensx337
+      - CommonProxyObserver:
+          requires:
+            - ensx337
+      - jt57:
+          requires:
+            - CommonProxyObserver
+      - package:
+          requires:
+            - jt57
+      - LocalSoftFuturePlugin:
+          requires:
+            - jt57
+      - DogVs:
+          requires:
+            - LocalSoftFuturePlugin
+      - yankee-5:
+          requires:
+            - DogVs
+      - Manifest-Rate-Busy
+      - evt_signal_remove
+      - DeployPipeline:
+          requires:
+            - Manifest-Rate-Busy
+            - evt_signal_remove
+      - UAT_INIT_8:
+          requires:
+            - Manifest-Rate-Busy
+            - evt_signal_remove
+      - node20-build:
+          requires:
+            - Manifest-Rate-Busy
+            - evt_signal_remove
+      - break-prod:
+          requires:
+            - Manifest-Rate-Busy
+            - evt_signal_remove
+      - q2-cleanup:
+          requires:
+            - Manifest-Rate-Busy
+            - evt_signal_remove
+      - uma-verify:
+          requires:
+            - Manifest-Rate-Busy
+            - evt_signal_remove
+      - asset-mango
+      - coNonceOptions:
+          requires:
+            - asset-mango
+      - fix-813:
+          requires:
+            - coNonceOptions
+      - SMTP_TTL:
+          requires:
+            - coNonceOptions
+      - API_ZONE_FAILED:
+          requires:
+            - SMTP_TTL
+      - sep25-release:
+          requires:
+            - API_ZONE_FAILED
